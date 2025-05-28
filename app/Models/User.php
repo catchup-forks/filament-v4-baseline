@@ -3,13 +3,16 @@
 namespace App\Models;
 
 use Database\Factories\UserFactory;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasAvatar;
+use Filament\Models\Contracts\HasName;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
-class User extends Model
+class User extends Authenticatable implements FilamentUser, HasName, HasAvatar
 {
     use HasFactory;
     use Notifiable;
@@ -74,6 +77,10 @@ class User extends Model
     // ——————————————————————————————————————————————————————————————
     // |                             FILAMENT PANEL INTEGRATION                           |
     // ——————————————————————————————————————————————————————————————
+    public function canAccessPanel($panel): bool
+    {
+        return true;
+    }
 
     public function getFilamentName(): string
     {
@@ -83,11 +90,6 @@ class User extends Model
     public function getFilamentAvatarUrl(): ?string
     {
         return null;
-    }
-
-    public function canAccessPanel($panel): bool
-    {
-        return true;
     }
 
     /*
