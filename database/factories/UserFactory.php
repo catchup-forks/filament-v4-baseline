@@ -2,14 +2,15 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Franchise;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
-class UserFactory extends Factory
+class UserFactory extends AbstractFactory
 {
     protected static ?string $password;
 
@@ -24,10 +25,24 @@ class UserFactory extends Factory
         ];
     }
 
-    public function unverified(): static
+    public function withRole(string $role): static
     {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
+        return $this->afterCreating(function (User $user) use ($role) {
+            $user->assignRole($role);
+        });
+    }
+
+    public function withRoles(array $roles): static
+    {
+        return $this->afterCreating(function (User $user) use ($roles) {
+            $user->syncRoles($roles);
+        });
+    }
+
+    public function forFranchise(Franchise $franchise): static
+    {
+        return $this->state([
+            'franchise_id' => $franchise->id,
         ]);
     }
 }

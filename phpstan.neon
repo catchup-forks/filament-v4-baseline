@@ -1,9 +1,9 @@
-#includes:
-#    - phpstan-baseline.neon
+includes:
+    - phpstan-baseline.neon
 
 parameters:
     tmpDir: null
-    level: 3
+    level: 5
     paths:
         - app/
 
