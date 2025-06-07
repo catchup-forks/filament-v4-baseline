@@ -7,10 +7,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Team extends Model
 {
-    protected $fillable = [
-        'name',
-        'slug',
-    ];
+    public $timestamps = false;
+
+    protected $guarded = [];
 
     public function users(): BelongsToMany
     {
