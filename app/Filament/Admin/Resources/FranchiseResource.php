@@ -12,6 +12,8 @@ use Filament\Tables\Table;
 
 class FranchiseResource extends Resource
 {
+    public static bool $isTenantScoped = false;
+
     protected static ?string $model = Franchise::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';

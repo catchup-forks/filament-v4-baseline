@@ -2,16 +2,18 @@
 
 namespace App\Filament\Franchise\Resources;
 
+use App\Filament\Base\TenantScopedResource;
 use App\Filament\Franchise\Resources\ExpenseResource\Pages;
 use App\Models\Expense;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class ExpenseResource extends Resource
+class ExpenseResource extends TenantScopedResource
 {
+    public static bool $isTenantScoped = true;
+
     protected static ?string $model = Expense::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';

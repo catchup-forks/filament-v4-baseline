@@ -38,7 +38,11 @@ class UserSeeder extends AbstractSeeder
                 User::factory()
                     ->count(3)
                     ->withRole($role->value)
-                    ->create();
+                    ->create()
+                    ->each(function (User $user) {
+                        $franchises = Franchise::query()->inRandomOrder()->take(1)->get();
+                        $user->franchises()->attach($franchises);
+                    });
             }
         });
     }

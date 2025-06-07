@@ -2,16 +2,18 @@
 
 namespace App\Filament\Franchise\Resources;
 
+use App\Filament\Base\TenantScopedResource;
 use App\Filament\Franchise\Resources\QuoteResource\Pages;
 use App\Models\Quote;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class QuoteResource extends Resource
+class QuoteResource extends TenantScopedResource
 {
+    public static bool $isTenantScoped = true;
+
     protected static ?string $model = Quote::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';

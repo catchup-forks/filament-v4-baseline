@@ -2,16 +2,18 @@
 
 namespace App\Filament\Franchise\Resources;
 
+use App\Filament\Base\TenantScopedResource;
 use App\Filament\Franchise\Resources\CreditorResource\Pages;
 use App\Models\Creditor;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class CreditorResource extends Resource
+class CreditorResource extends TenantScopedResource
 {
+    public static bool $isTenantScoped = true;
+
     protected static ?string $model = Creditor::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';

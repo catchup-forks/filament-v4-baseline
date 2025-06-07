@@ -11,16 +11,13 @@ abstract class TenantScopedResource extends Resource
 {
     public static bool $isTenantScoped = true;
 
-    public static function getEloquentQuery(): Builder
+    public static function applyTenantScope(Builder $query): Builder
     {
-        $query = parent::getEloquentQuery();
-
         $user = auth()->user();
 
         if (
             static::$isTenantScoped &&
-            ! collect(RolesEnum::elevated())
-                ->some(fn (string $role) => $user?->hasRole($role))
+            ! in_array($user?->getRoleNames()?->first(), RolesEnum::elevated(), true)
         ) {
             return $query->whereBelongsTo(Filament::getTenant());
         }
