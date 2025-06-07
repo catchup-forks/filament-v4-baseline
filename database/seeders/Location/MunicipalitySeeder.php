@@ -1,8 +1,10 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Location;
 
-class DistrictSeeder extends AbstractSeeder
+use Database\Seeders\AbstractSeeder;
+
+class MunicipalitySeeder extends AbstractSeeder
 {
     public function run(): void
     {

@@ -1,8 +1,10 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\ACL;
 
-class LiquorAuthoritySeeder extends AbstractSeeder
+use Database\Seeders\AbstractSeeder;
+
+class OwnerSeeder extends AbstractSeeder
 {
     public function run(): void
     {

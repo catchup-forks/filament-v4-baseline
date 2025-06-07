@@ -2,12 +2,19 @@
 
 namespace Database\Seeders;
 
+use App\Models\Business;
+use App\Models\Contact;
+
 class ContactSeeder extends AbstractSeeder
 {
     public function run(): void
     {
         $this->progress('Creating {{ model }}', function () {
-            // {{ fill the model name here model }}::factory(10)->create();
+            Business::query()->each(function ($business) {
+                Contact::factory()->count(2)->create([
+                    'business_id' => $business->id,
+                ]);
+            });
         });
     }
 }

@@ -2,12 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\Address;
+
 class AddressSeeder extends AbstractSeeder
 {
     public function run(): void
     {
-        $this->progress('Creating {{ model }}', function () {
-            // {{ fill the model name here model }}::factory(10)->create();
+        $this->progress('Creating Addresses', function () {
+            Address::factory()->count(30)->create();
         });
     }
 }

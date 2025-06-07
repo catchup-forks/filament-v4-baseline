@@ -8,8 +8,11 @@ class FranchiseSeeder extends AbstractSeeder
 {
     public function run(): void
     {
-        $this->progress('Creating {{ model }}', function () {
-            Franchise::factory(10)->create();
+        $this->progress('Seeding Franchises...', function () {
+            Franchise::factory()
+                ->count(2)
+                ->withDefaults()
+                ->create();
         });
     }
 }
