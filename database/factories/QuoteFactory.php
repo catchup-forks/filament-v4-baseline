@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Business;
 use App\Models\Quote;
 
 /**
@@ -16,7 +15,7 @@ class QuoteFactory extends AbstractFactory
     {
         return [
             'franchise_id' => $this->getFranchiseId(),
-            'business_id'  => Business::factory(),
+            'business_id'  => $this->getBusinessId(),
             'number'       => mb_strtoupper($this->faker->bothify('QUO-#####')),
             'quoted_at'    => $this->faker->date,
             'expires_at'   => $this->faker->date,

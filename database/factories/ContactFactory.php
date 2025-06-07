@@ -2,8 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Business;
-
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Contact>
  */
@@ -13,7 +11,7 @@ class ContactFactory extends AbstractFactory
     {
         return [
             'franchise_id' => $this->getFranchiseId(),
-            'business_id'  => Business::query()->inRandomOrder()->value('id') ?? Business::factory()->create()->id,
+            'business_id'  => $this->getBusinessId(),
             'name'         => $this->faker->name,
         ];
     }

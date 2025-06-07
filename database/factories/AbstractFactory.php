@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\DepartmentType;
+use App\Models\Business;
 use App\Models\Department;
 use App\Models\Franchise;
 use App\Models\User;
@@ -33,6 +34,11 @@ abstract class AbstractFactory extends Factory
                 ])->each(fn ($user) => $user->assignRole($role));
             });
         });
+    }
+
+    protected function getBusinessId(): int
+    {
+        return Business::query()->inRandomOrder()->value('id') ?? Business::factory()->create()->id;
     }
 
     protected function getFranchiseId(): int

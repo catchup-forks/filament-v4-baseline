@@ -11,10 +11,8 @@ use Database\Seeders\Financial\BankSeeder;
 use Database\Seeders\Financial\CreditorSeeder;
 use Database\Seeders\Financial\ExpenseCategorySeeder;
 use Database\Seeders\Financial\ExpenseSeeder;
-use Database\Seeders\Financial\InvoiceItemSeeder;
 use Database\Seeders\Financial\InvoiceSeeder;
 use Database\Seeders\Financial\PaymentSeeder;
-use Database\Seeders\Financial\QuoteItemSeeder;
 use Database\Seeders\Financial\QuoteSeeder;
 use Database\Seeders\Location\LiquorAuthoritySeeder;
 use Database\Seeders\Location\Location\ProvinceServiceSeeder;
@@ -50,9 +48,7 @@ class DatabaseSeeder extends Seeder
             ExpenseSeeder::class,
             ItemSeeder::class,
             QuoteSeeder::class,
-            QuoteItemSeeder::class,
             InvoiceSeeder::class,
-            InvoiceItemSeeder::class,
             PaymentSeeder::class,
             AddressSeeder::class,
             AddressableSeeder::class,

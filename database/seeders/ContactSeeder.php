@@ -9,7 +9,7 @@ class ContactSeeder extends AbstractSeeder
 {
     public function run(): void
     {
-        $this->progress('Creating {{ model }}', function () {
+        $this->progress('Creating Contacts', function () {
             Business::query()->each(function ($business) {
                 Contact::factory()->count(2)->create([
                     'business_id' => $business->id,

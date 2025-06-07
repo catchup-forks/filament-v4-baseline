@@ -2,14 +2,18 @@
 
 namespace Database\Seeders\Location;
 
+use App\Models\LiquorAuthority;
+use App\Models\Province;
 use Database\Seeders\AbstractSeeder;
 
 class LiquorAuthoritySeeder extends AbstractSeeder
 {
     public function run(): void
     {
-        $this->progress('Creating {{ model }}', function () {
-            // {{ fill the model name here model }}::factory(10)->create();
+        $this->progress('Creating Liquor Authorities', function () {
+            Province::all()->each(function ($province) {
+                LiquorAuthority::factory()->create(['province_id' => $province->id]);
+            });
         });
     }
 }
