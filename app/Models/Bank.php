@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Concerns\BelongsToFranchise;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Bank extends BaseModel
 {
-    use BelongsToFranchise;
-
     /** @use HasFactory<\Database\Factories\BankFactory> */
     use HasFactory;
 
@@ -32,7 +30,10 @@ class Bank extends BaseModel
     | Relationships
     |--------------------------------------------------------------------------
     */
-
+    public function accounts(): HasMany
+    {
+        return $this->hasMany(BankAccount::class);
+    }
     #endregion
     #region Accessors
     /*

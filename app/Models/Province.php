@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Concerns\BelongsToFranchise;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Province extends BaseModel
 {
-    use BelongsToFranchise;
-
     /** @use HasFactory<\Database\Factories\ProvinceFactory> */
     use HasFactory;
 
@@ -32,7 +30,10 @@ class Province extends BaseModel
     | Relationships
     |--------------------------------------------------------------------------
     */
-
+    public function districts(): HasMany
+    {
+        return $this->hasMany(District::class);
+    }
     #endregion
     #region Accessors
     /*

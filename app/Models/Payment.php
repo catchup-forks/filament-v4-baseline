@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Concerns\BelongsToFranchise;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Payment extends BaseModel
 {
@@ -32,7 +33,15 @@ class Payment extends BaseModel
     | Relationships
     |--------------------------------------------------------------------------
     */
+    public function invoice(): BelongsTo
+    {
+        return $this->belongsTo(Invoice::class);
+    }
 
+    public function bankAccount(): BelongsTo
+    {
+        return $this->belongsTo(BankAccount::class);
+    }
     #endregion
     #region Accessors
     /*

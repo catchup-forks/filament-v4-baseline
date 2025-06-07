@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Concerns\BelongsToFranchise;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Expense extends BaseModel
 {
@@ -32,7 +33,20 @@ class Expense extends BaseModel
     | Relationships
     |--------------------------------------------------------------------------
     */
+    public function business(): BelongsTo
+    {
+        return $this->belongsTo(Business::class);
+    }
 
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(ExpenseCategory::class);
+    }
+
+    public function creditor(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'creditor_id');
+    }
     #endregion
     #region Accessors
     /*

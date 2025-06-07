@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Concerns\BelongsToFranchise;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Address extends BaseModel
 {
@@ -31,6 +32,10 @@ class Address extends BaseModel
     | Relationships
     |--------------------------------------------------------------------------
     */
+    public function addressable(): MorphTo
+    {
+        return $this->morphTo();
+    }
 
     #endregion
     #region Accessors

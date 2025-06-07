@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Concerns\BelongsToFranchise;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class BankAccount extends BaseModel
 {
@@ -32,6 +33,10 @@ class BankAccount extends BaseModel
     | Relationships
     |--------------------------------------------------------------------------
     */
+    public function bank(): BelongsTo
+    {
+        return $this->belongsTo(Bank::class);
+    }
 
     #endregion
     #region Accessors

@@ -4,10 +4,20 @@ namespace App\Models;
 
 use App\Models\Concerns\BelongsToFranchise;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Contact extends BaseModel
 {
     use BelongsToFranchise;
+
+    /** @use HasFactory<\Database\Factories\ContactFactory> */
+    use HasFactory;
+
+    public $timestamps = false;
+
+    protected $casts = [];
+
+    protected $guarded = [];
 
     #region Static Methods
     /*
@@ -23,7 +33,10 @@ class Contact extends BaseModel
     | Relationships
     |--------------------------------------------------------------------------
     */
-
+    public function business(): BelongsTo
+    {
+        return $this->belongsTo(Business::class);
+    }
     #endregion
     #region Accessors
     /*
@@ -55,13 +68,6 @@ class Contact extends BaseModel
     | Factory
     |--------------------------------------------------------------------------
     */
-    /** @use HasFactory<\Database\Factories\ContactFactory> */
-    use HasFactory;
 
-    public $timestamps = false;
-
-    protected $casts = [];
-
-    protected $guarded = [];
     #endregion
 }

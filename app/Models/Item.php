@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\BelongsToFranchise;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class District extends BaseModel
+class Item extends BaseModel
 {
-    /** @use HasFactory<\Database\Factories\DistrictFactory> */
+    use BelongsToFranchise;
+
+    /** @use HasFactory<\Database\Factories\ItemFactory> */
     use HasFactory;
 
     public $timestamps = false;
@@ -31,14 +33,14 @@ class District extends BaseModel
     | Relationships
     |--------------------------------------------------------------------------
     */
-    public function province(): BelongsTo
+    public function invoiceItems(): BelongsTo
     {
-        return $this->belongsTo(Province::class);
+        return $this->belongsTo(InvoiceItem::class);
     }
 
-    public function municipalities(): HasMany
+    public function quotItems(): BelongsTo
     {
-        return $this->hasMany(Municipality::class);
+        return $this->belongsTo(QuoteItem::class);
     }
     #endregion
     #region Accessors

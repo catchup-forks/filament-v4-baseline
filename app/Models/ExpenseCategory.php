@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Concerns\BelongsToFranchise;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ExpenseCategory extends BaseModel
 {
@@ -32,7 +33,10 @@ class ExpenseCategory extends BaseModel
     | Relationships
     |--------------------------------------------------------------------------
     */
-
+    public function expenses(): HasMany
+    {
+        return $this->hasMany(Expense::class);
+    }
     #endregion
     #region Accessors
     /*

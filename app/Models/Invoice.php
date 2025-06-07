@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Models\Concerns\BelongsToFranchise;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Invoice extends BaseModel
 {
@@ -32,7 +34,20 @@ class Invoice extends BaseModel
     | Relationships
     |--------------------------------------------------------------------------
     */
+    public function business(): BelongsTo
+    {
+        return $this->belongsTo(Business::class);
+    }
 
+    public function items(): HasMany
+    {
+        return $this->hasMany(InvoiceItem::class);
+    }
+
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
+    }
     #endregion
     #region Accessors
     /*

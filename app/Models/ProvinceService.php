@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Concerns\BelongsToFranchise;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ProvinceService extends BaseModel
 {
@@ -32,7 +33,10 @@ class ProvinceService extends BaseModel
     | Relationships
     |--------------------------------------------------------------------------
     */
-
+    public function province(): BelongsTo
+    {
+        return $this->belongsTo(Province::class);
+    }
     #endregion
     #region Accessors
     /*

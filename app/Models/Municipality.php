@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Concerns\BelongsToFranchise;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Municipality extends BaseModel
 {
-    use BelongsToFranchise;
-
     /** @use HasFactory<\Database\Factories\MunicipalityFactory> */
     use HasFactory;
 
@@ -32,7 +30,10 @@ class Municipality extends BaseModel
     | Relationships
     |--------------------------------------------------------------------------
     */
-
+    public function district(): BelongsTo
+    {
+        return $this->belongsTo(District::class);
+    }
     #endregion
     #region Accessors
     /*

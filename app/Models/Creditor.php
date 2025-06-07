@@ -4,10 +4,20 @@ namespace App\Models;
 
 use App\Models\Concerns\BelongsToFranchise;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Creditor extends BaseModel
 {
     use BelongsToFranchise;
+
+    /** @use HasFactory<\Database\Factories\CreditorFactory> */
+    use HasFactory;
+
+    public $timestamps = false;
+
+    protected $casts = [];
+
+    protected $guarded = [];
 
     #region Static Methods
     /*
@@ -23,7 +33,10 @@ class Creditor extends BaseModel
     | Relationships
     |--------------------------------------------------------------------------
     */
-
+    public function expenses(): HasMany
+    {
+        return $this->hasMany(Expense::class);
+    }
     #endregion
     #region Accessors
     /*
@@ -55,13 +68,6 @@ class Creditor extends BaseModel
     | Factory
     |--------------------------------------------------------------------------
     */
-    /** @use HasFactory<\Database\Factories\CreditorFactory> */
-    use HasFactory;
 
-    public $timestamps = false;
-
-    protected $casts = [];
-
-    protected $guarded = [];
     #endregion
 }

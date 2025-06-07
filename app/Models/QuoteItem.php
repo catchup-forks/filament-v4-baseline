@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Concerns\BelongsToFranchise;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class QuoteItem extends BaseModel
 {
@@ -33,6 +34,15 @@ class QuoteItem extends BaseModel
     |--------------------------------------------------------------------------
     */
 
+    public function quote(): BelongsTo
+    {
+        return $this->belongsTo(Quote::class);
+    }
+
+    public function item(): BelongsTo
+    {
+        return $this->belongsTo(Item::class);
+    }
     #endregion
     #region Accessors
     /*
