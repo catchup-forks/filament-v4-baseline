@@ -12,6 +12,9 @@ return new class () extends Migration {
             $table->foreignId('franchise_id')
                 ->constrained()
                 ->cascadeOnDelete();
+            $table->foreignId('business_id')
+                ->constrained()
+                ->cascadeOnDelete();
             $table->string('number');
             $table->date('quoted_at');
             $table->date('expires_at');

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Franchise;
 use App\Models\Item;
 use App\Models\Quote;
 
@@ -19,5 +20,10 @@ class QuoteItemFactory extends AbstractFactory
             'quantity'     => $this->faker->randomFloat(2, 1, 10),
             'price'        => $this->faker->randomFloat(2, 50, 500),
         ];
+    }
+
+    protected function getFranchiseId(): int
+    {
+        return Franchise::query()->inRandomOrder()->value('id');
     }
 }

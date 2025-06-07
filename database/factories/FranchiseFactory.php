@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Municipality;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Franchise>
  */
-class FranchiseFactory extends AbstractFactory
+class FranchiseFactory extends Factory
 {
     public function definition(): array
     {
@@ -19,10 +19,5 @@ class FranchiseFactory extends AbstractFactory
             'name' => $companyName,
             'slug' => Str::slug(mb_strtolower($companyName)),
         ];
-    }
-
-    public function withMunicipality(Municipality $municipality): static
-    {
-        return $this->state(fn () => ['municipality_id' => $municipality->id]);
     }
 }

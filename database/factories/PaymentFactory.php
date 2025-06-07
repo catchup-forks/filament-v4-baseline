@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Franchise;
 use App\Models\Invoice;
 
 /**
@@ -17,5 +18,10 @@ class PaymentFactory extends AbstractFactory
             'paid_at'      => $this->faker->date,
             'amount'       => $this->faker->randomFloat(2, 100, 1000),
         ];
+    }
+
+    protected function getFranchiseId(): int
+    {
+        return Franchise::query()->inRandomOrder()->value('id');
     }
 }

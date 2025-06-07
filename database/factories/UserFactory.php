@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Franchise;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
@@ -12,7 +11,7 @@ use Illuminate\Support\Str;
  */
 class UserFactory extends AbstractFactory
 {
-    protected static ?string $password;
+    protected static ?string $password = 'password';
 
     public function definition(): array
     {
@@ -20,7 +19,7 @@ class UserFactory extends AbstractFactory
             'name'              => fake()->name(),
             'email'             => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password'          => static::$password ??= Hash::make('password'),
+            'password'          => static::$password,
             'remember_token'    => Str::random(10),
         ];
     }

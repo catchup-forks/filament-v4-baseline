@@ -2,7 +2,6 @@
 
 namespace App\Providers\Filament;
 
-use App\Filament\Pages\Tenancy\RegisterFranchise;
 use App\Models\Franchise;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -56,7 +55,6 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->tenant(Franchise::class, slugAttribute: 'slug')
-            ->tenantRegistration(RegisterFranchise::class);
+            ->tenant(Franchise::class, slugAttribute: 'slug');
     }
 }

@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Enums\DepartmentType;
 use App\Models\Business;
 use App\Models\Department;
-use App\Models\Franchise;
 use App\Models\Province;
 use App\Models\User;
 use Database\Seeders\Location\DistrictSeeder;
@@ -48,11 +47,6 @@ abstract class AbstractFactory extends Factory
     protected function getBusinessId(): int
     {
         return Business::query()->inRandomOrder()->value('id') ?? Business::factory()->create()->id;
-    }
-
-    protected function getFranchiseId(): int
-    {
-        return Franchise::query()->inRandomOrder()->value('id') ?? Franchise::factory()->create()->id;
     }
 
     protected function afterCreated($model): void

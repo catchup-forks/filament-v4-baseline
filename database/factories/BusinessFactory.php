@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Business;
 use App\Models\Contact;
+use App\Models\Franchise;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Business>
@@ -25,5 +26,10 @@ class BusinessFactory extends AbstractFactory
                 'business_id' => $business->id,
             ]);
         });
+    }
+
+    protected function getFranchiseId(): int
+    {
+        return Franchise::query()->inRandomOrder()->value('id');
     }
 }

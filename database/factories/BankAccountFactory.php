@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Bank;
+use App\Models\Franchise;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BankAccount>
@@ -17,5 +18,10 @@ class BankAccountFactory extends AbstractFactory
             'account_number' => $this->faker->bankAccountNumber,
             'account_name'   => $this->faker->name,
         ];
+    }
+
+    protected function getFranchiseId(): int
+    {
+        return Franchise::query()->inRandomOrder()->value('id');
     }
 }

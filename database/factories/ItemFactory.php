@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Franchise;
 use Illuminate\Support\Str;
 
 /**
@@ -15,7 +16,11 @@ class ItemFactory extends AbstractFactory
             'franchise_id' => $this->getFranchiseId(),
             'code'         => Str::slug($this->faker->word),
             'name'         => $this->faker->word,
-            'price'        => $this->faker->randomFloat(2, 5, 500),
         ];
+    }
+
+    protected function getFranchiseId(): int
+    {
+        return Franchise::query()->inRandomOrder()->value('id');
     }
 }

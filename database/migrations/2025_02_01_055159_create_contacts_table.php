@@ -13,6 +13,7 @@ return new class () extends Migration {
                 ->constrained()
                 ->cascadeOnDelete();
             $table->string('name');
+            $table->string('type');
         });
     }
 

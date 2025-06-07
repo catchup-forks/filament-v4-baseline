@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Franchise;
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Address>
  */
@@ -16,5 +18,10 @@ class AddressFactory extends AbstractFactory
             'postal_code'  => $this->faker->postcode,
             'city'         => $this->faker->city,
         ];
+    }
+
+    protected function getFranchiseId(): int
+    {
+        return Franchise::query()->inRandomOrder()->value('id');
     }
 }

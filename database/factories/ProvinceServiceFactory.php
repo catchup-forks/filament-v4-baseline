@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Franchise;
 use App\Models\Province;
 
 /**
@@ -16,5 +17,10 @@ class ProvinceServiceFactory extends AbstractFactory
             'province_id'  => Province::factory(),
             'name'         => $this->faker->word,
         ];
+    }
+
+    protected function getFranchiseId(): int
+    {
+        return Franchise::query()->inRandomOrder()->value('id');
     }
 }

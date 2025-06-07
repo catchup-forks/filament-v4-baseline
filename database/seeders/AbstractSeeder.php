@@ -8,11 +8,15 @@ abstract class AbstractSeeder extends Seeder
 {
     protected function progress(string $label, callable $callback): void
     {
-        $this->command->info($label);
-        $bar = $this->command->getOutput()->createProgressBar();
-        $bar->start();
-        $callback();
-        $bar->finish();
-        $this->command->newLine(2);
+        if ($this->command && app()->runningInConsole()) {
+            $this->command->info($label);
+            $bar = $this->command->getOutput()->createProgressBar();
+            $bar->start();
+            $callback();
+            $bar->finish();
+            $this->command->newLine(2);
+        } else {
+            $callback();
+        }
     }
 }

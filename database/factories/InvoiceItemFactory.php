@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Franchise;
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use App\Models\Item;
@@ -22,5 +23,10 @@ class InvoiceItemFactory extends AbstractFactory
             'quantity'     => $this->faker->randomFloat(2, 1, 10),
             'price'        => $this->faker->randomFloat(2, 50, 500),
         ];
+    }
+
+    protected function getFranchiseId(): int
+    {
+        return Franchise::query()->inRandomOrder()->value('id');
     }
 }

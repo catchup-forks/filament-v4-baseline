@@ -2,14 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Concerns\BelongsToFranchise;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ExpenseCategory extends BaseModel
 {
-    use BelongsToFranchise;
-
     /** @use HasFactory<\Database\Factories\ExpenseCategoryFactory> */
     use HasFactory;
 

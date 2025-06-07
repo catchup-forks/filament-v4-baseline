@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\ContactType;
+use App\Models\Franchise;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Contact>
@@ -31,5 +32,10 @@ class ContactFactory extends AbstractFactory
         return $this->state(fn () => [
             'type' => ContactType::PROSPECT->value,
         ]);
+    }
+
+    protected function getFranchiseId(): int
+    {
+        return Franchise::query()->inRandomOrder()->value('id');
     }
 }

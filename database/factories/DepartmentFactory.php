@@ -23,4 +23,9 @@ class DepartmentFactory extends AbstractFactory
     {
         return $this->for($franchise);
     }
+
+    protected function getFranchiseId(): int
+    {
+        return Franchise::query()->inRandomOrder()->value('id');
+    }
 }

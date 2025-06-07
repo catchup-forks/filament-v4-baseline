@@ -34,8 +34,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Post-seeding cross-relations
-        (new ItemSeeder())->seedBusinessItems();
-        (new UserSeeder())->changeRequestSeeder();
+        //(new ItemSeeder())->seedBusinessItems();
+        //(new UserSeeder())->changeRequestSeeder();
         ContactSeeder::prospectAndLeadSeeder();
 
         // Final Owner-only setups

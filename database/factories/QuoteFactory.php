@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Franchise;
 use App\Models\Quote;
 
 /**
@@ -20,5 +21,10 @@ class QuoteFactory extends AbstractFactory
             'quoted_at'    => $this->faker->date,
             'expires_at'   => $this->faker->date,
         ];
+    }
+
+    protected function getFranchiseId(): int
+    {
+        return Franchise::query()->inRandomOrder()->value('id');
     }
 }
