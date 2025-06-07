@@ -54,6 +54,5 @@ class MyAdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ]);
-        //->tenant(Franchise::class, slugAttribute: 'slug');
     }
 }
