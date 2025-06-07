@@ -13,4 +13,9 @@ class ProvinceFactory extends AbstractFactory
             'name' => $this->faker->state,
         ];
     }
+
+    public function withName(string $name): static
+    {
+        return $this->state(fn () => ['name' => $name]);
+    }
 }

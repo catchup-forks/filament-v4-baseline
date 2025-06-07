@@ -11,9 +11,9 @@ class LiquorAuthoritySeeder extends AbstractSeeder
     public function run(): void
     {
         $this->progress('Creating Liquor Authorities', function () {
-            Province::all()->each(function ($province) {
-                LiquorAuthority::factory()->create(['province_id' => $province->id]);
-            });
+            Province::all()->each(
+                fn ($province) => LiquorAuthority::factory()->withProvince($province)->create()
+            );
         });
     }
 }

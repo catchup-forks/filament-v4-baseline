@@ -19,4 +19,9 @@ class DistrictFactory extends AbstractFactory
             'province_id' => Province::query()->inRandomOrder()->value('id') ?? Province::factory()->create()->id,
         ];
     }
+
+    public function withName(string $name): static
+    {
+        return $this->state(fn () => ['name' => $name]);
+    }
 }

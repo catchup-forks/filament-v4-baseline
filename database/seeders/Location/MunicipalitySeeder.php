@@ -2,9 +2,9 @@
 
 namespace Database\Seeders\Location;
 
-use App\Models\District;
+use App\Enums\MunicipalityType;
+use App\Models\Franchise;
 use App\Models\Municipality;
-use App\Models\Province;
 use Database\Seeders\AbstractSeeder;
 
 class MunicipalitySeeder extends AbstractSeeder
@@ -12,13 +12,12 @@ class MunicipalitySeeder extends AbstractSeeder
     public function run(): void
     {
         $this->progress('Creating Municipalities', function () {
-            Province::all()->each(function ($province) {
-                District::factory(2)
-                    ->create(['province_id' => $province->id])
-                    ->each(function ($district) {
-                        Municipality::factory(3)->create(['district_id' => $district->id]);
-                    });
-            });
+            Municipality::query()
+                ->whereIn('type', [MunicipalityType::LOCAL->value, MunicipalityType::METRO->value])
+                ->get()
+                ->each(
+                    fn ($municipality) => Franchise::factory()->withMunicipality($municipality)->create()
+                );
         });
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Municipality;
 use Illuminate\Support\Str;
 
 /**
@@ -18,5 +19,10 @@ class FranchiseFactory extends AbstractFactory
             'name' => $companyName,
             'slug' => Str::slug(mb_strtolower($companyName)),
         ];
+    }
+
+    public function withMunicipality(Municipality $municipality): static
+    {
+        return $this->state(fn () => ['municipality_id' => $municipality->id]);
     }
 }
