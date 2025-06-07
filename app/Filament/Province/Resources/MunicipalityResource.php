@@ -14,7 +14,7 @@ class MunicipalityResource extends Resource
 {
     protected static ?string $model = Municipality::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
 
     public static function form(Form $form): Form
     {
@@ -65,9 +65,6 @@ class MunicipalityResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListMunicipalities::route('/'),
-            'create' => Pages\CreateMunicipality::route('/create'),
-            'edit'   => Pages\EditMunicipality::route('/{record}/edit'),
-        ];
+            'index' => Pages\ListMunicipalities::route('/'),        ];
     }
 }

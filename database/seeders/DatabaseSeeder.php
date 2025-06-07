@@ -26,11 +26,11 @@ class DatabaseSeeder extends Seeder
             BusinessSeeder::class,
             ContactSeeder::class,
             ItemSeeder::class,
+            LocationSeeder::class,
             FranchiseSeeder::class, // Triggers departments + admin user creation via withDefaults()
             QuoteSeeder::class,
             InvoiceSeeder::class,
             FinanceSeeder::class,
-            LocationSeeder::class,
         ]);
 
         // Post-seeding cross-relations

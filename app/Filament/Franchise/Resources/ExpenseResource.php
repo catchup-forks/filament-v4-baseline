@@ -16,7 +16,7 @@ class ExpenseResource extends TenantScopedResource
 
     protected static ?string $model = Expense::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
 
     public static function form(Form $form): Form
     {
@@ -73,9 +73,6 @@ class ExpenseResource extends TenantScopedResource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListExpenses::route('/'),
-            'create' => Pages\CreateExpense::route('/create'),
-            'edit'   => Pages\EditExpense::route('/{record}/edit'),
-        ];
+            'index' => Pages\ListExpenses::route('/'),        ];
     }
 }

@@ -56,6 +56,22 @@ class User extends Authenticatable implements FilamentUser, HasTenants
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return true;
+        if ( ! $this->hasAnyRole([...RolesEnum::cases()])) {
+            return false;
+        }
+
+        $elevatedRoles = RolesEnum::elevated();
+        if ($elevatedRoles) {
+            return true;
+        }
+
+        /*
+         * todo: clientPanel
+         */
+        return match ($panel->getId()) {
+            'franchise', 'province' => $this->hasAnyRole(RolesEnum::nonAdmin()),
+            'user'  => true, // or some condition
+            default => false,
+        };
     }
 }

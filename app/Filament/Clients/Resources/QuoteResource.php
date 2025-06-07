@@ -14,7 +14,7 @@ class QuoteResource extends Resource
 {
     protected static ?string $model = Quote::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
 
     public static function form(Form $form): Form
     {
@@ -76,9 +76,6 @@ class QuoteResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListQuotes::route('/'),
-            'create' => Pages\CreateQuote::route('/create'),
-            'edit'   => Pages\EditQuote::route('/{record}/edit'),
-        ];
+            'index' => Pages\ListQuotes::route('/'),        ];
     }
 }

@@ -16,7 +16,7 @@ class DepartmentResource extends TenantScopedResource
 
     protected static ?string $model = Department::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
 
     public static function form(Form $form): Form
     {
@@ -61,9 +61,6 @@ class DepartmentResource extends TenantScopedResource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListDepartments::route('/'),
-            'create' => Pages\CreateDepartment::route('/create'),
-            'edit'   => Pages\EditDepartment::route('/{record}/edit'),
-        ];
+            'index' => Pages\ListDepartments::route('/'),        ];
     }
 }

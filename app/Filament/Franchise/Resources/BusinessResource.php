@@ -16,7 +16,7 @@ class BusinessResource extends TenantScopedResource
 
     protected static ?string $model = Business::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
     public static function form(Form $form): Form
     {
@@ -56,9 +56,6 @@ class BusinessResource extends TenantScopedResource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListBusinesses::route('/'),
-            'create' => Pages\CreateBusiness::route('/create'),
-            'edit'   => Pages\EditBusiness::route('/{record}/edit'),
-        ];
+            'index' => Pages\ListBusinesses::route('/'),        ];
     }
 }

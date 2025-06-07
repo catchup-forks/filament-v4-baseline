@@ -16,7 +16,7 @@ class InvoiceResource extends TenantScopedResource
 
     protected static ?string $model = Invoice::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
 
     public static function form(Form $form): Form
     {
@@ -72,9 +72,6 @@ class InvoiceResource extends TenantScopedResource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListInvoices::route('/'),
-            'create' => Pages\CreateInvoice::route('/create'),
-            'edit'   => Pages\EditInvoice::route('/{record}/edit'),
-        ];
+            'index' => Pages\ListInvoices::route('/'),        ];
     }
 }

@@ -16,7 +16,7 @@ class FranchiseResource extends Resource
 
     protected static ?string $model = Franchise::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
 
     public static function form(Form $form): Form
     {
@@ -66,9 +66,6 @@ class FranchiseResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListFranchises::route('/'),
-            'create' => Pages\CreateFranchise::route('/create'),
-            'edit'   => Pages\EditFranchise::route('/{record}/edit'),
-        ];
+            'index' => Pages\ListFranchises::route('/'),        ];
     }
 }

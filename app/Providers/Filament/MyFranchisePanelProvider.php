@@ -2,7 +2,6 @@
 
 namespace App\Providers\Filament;
 
-use App\Models\Franchise;
 use Filament\FontProviders\GoogleFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -24,10 +23,10 @@ class MyFranchisePanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default()
             ->id('franchise')
             ->path('franchise')
             ->login()
+            ->authGuard('web')
             ->passwordReset()
             ->emailVerification()
             ->unsavedChangesAlerts()
@@ -113,7 +112,10 @@ class MyFranchisePanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ])
-            ->tenant(Franchise::class, slugAttribute: 'slug');
+            ]);
+        /*->tenant(Franchise::class, slugAttribute: 'slug')
+        ->tenantMiddleware([
+            ResolveFranchiseTenant::class,
+        ]);*/
     }
 }

@@ -14,7 +14,7 @@ class DistrictResource extends Resource
 {
     protected static ?string $model = District::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
 
     public static function form(Form $form): Form
     {
@@ -60,9 +60,6 @@ class DistrictResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListDistricts::route('/'),
-            'create' => Pages\CreateDistrict::route('/create'),
-            'edit'   => Pages\EditDistrict::route('/{record}/edit'),
-        ];
+            'index' => Pages\ListDistricts::route('/'),        ];
     }
 }

@@ -16,7 +16,7 @@ class PaymentResource extends TenantScopedResource
 
     protected static ?string $model = Payment::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
 
     public static function form(Form $form): Form
     {
@@ -68,9 +68,6 @@ class PaymentResource extends TenantScopedResource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListPayments::route('/'),
-            'create' => Pages\CreatePayment::route('/create'),
-            'edit'   => Pages\EditPayment::route('/{record}/edit'),
-        ];
+            'index' => Pages\ListPayments::route('/'),        ];
     }
 }

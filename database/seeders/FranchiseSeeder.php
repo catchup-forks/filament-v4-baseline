@@ -24,6 +24,12 @@ class FranchiseSeeder extends AbstractSeeder
         $this->progress('Seeding Franchises with User associations...', function () {
             $users = User::role(RolesEnum::nonAdmin())->get();
 
+            if (Municipality::query()->whereIn('type', [MunicipalityType::METRO, MunicipalityType::LOCAL])->doesntExist()) {
+                $this->command->error('No eligible municipalities found. Make sure LocationSeeder is executed first.');
+
+                return;
+            }
+
             Municipality::query()
                 ->whereIn('type', [MunicipalityType::METRO, MunicipalityType::LOCAL])
                 ->get()

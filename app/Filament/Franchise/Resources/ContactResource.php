@@ -16,7 +16,7 @@ class ContactResource extends TenantScopedResource
 
     protected static ?string $model = Contact::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
 
     public static function form(Form $form): Form
     {
@@ -67,9 +67,6 @@ class ContactResource extends TenantScopedResource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListContacts::route('/'),
-            'create' => Pages\CreateContact::route('/create'),
-            'edit'   => Pages\EditContact::route('/{record}/edit'),
-        ];
+            'index' => Pages\ListContacts::route('/'),        ];
     }
 }

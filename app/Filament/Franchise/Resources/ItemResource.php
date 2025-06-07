@@ -16,7 +16,7 @@ class ItemResource extends TenantScopedResource
 
     protected static ?string $model = Item::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
 
     public static function form(Form $form): Form
     {
@@ -61,9 +61,6 @@ class ItemResource extends TenantScopedResource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListItems::route('/'),
-            'create' => Pages\CreateItem::route('/create'),
-            'edit'   => Pages\EditItem::route('/{record}/edit'),
-        ];
+            'index' => Pages\ListItems::route('/'),        ];
     }
 }
