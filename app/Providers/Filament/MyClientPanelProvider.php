@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Filament\FontProviders\GoogleFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -9,7 +10,6 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
-use Filament\Support\Colors\Color;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -25,8 +25,68 @@ class MyClientPanelProvider extends PanelProvider
         return $panel
             ->id('clients')
             ->path('clients')
+            ->login()
+            ->passwordReset()
+            ->emailVerification()
+            ->unsavedChangesAlerts()
+            ->sidebarCollapsibleOnDesktop()
+            ->font(
+                'Poppins',
+                provider: GoogleFontProvider::class,
+            )
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => [
+                    50  => '#F8FAFC',  // lightest slate
+                    100 => '#F1F5F9',  // very pale slate
+                    200 => '#E2E8F0',  // soft slate gray
+                    300 => '#CBD5E1',  // light slate gray
+                    400 => '#94A3B8',  // medium-light slate
+                    500 => '#64748B',  // true slate
+                    600 => '#475569',  // deep slate
+                    700 => '#334155',  // darker slate
+                    800 => '#1E293B',  // very dark slate
+                    900 => '#0F172A',  // almost-black slate
+                    950 => '#020617',  // pure black with slate tint
+                ],
+                'curious' => [
+                    50  => '#F2F7FD',
+                    100 => '#E3EFFB',
+                    200 => '#C1DFF6',
+                    300 => '#8FC0EE',
+                    400 => '#429AE1',
+                    500 => '#2684D1',
+                    600 => '#1868B1',
+                    700 => '#145390',
+                    800 => '#154777',
+                    900 => '#113153',
+                    950 => '#0F2742',
+                ],
+                'darkious' => [
+                    50  => '#CCE0FF',
+                    100 => '#99B3EB',
+                    200 => '#6696D6',
+                    300 => '#2D6BB8',
+                    400 => '#004DB8',
+                    500 => '#003F99',
+                    600 => '#002F7A',
+                    700 => '#00265F',
+                    800 => '#00204F',
+                    900 => '#001B3E',
+                    950 => '#00102B',
+                ],
+                'emerald' => [
+                    50  => '#ECFDF5',
+                    100 => '#D1F8E4',
+                    200 => '#A8ECCD',
+                    300 => '#6FD9AE',
+                    400 => '#3CBF8A',
+                    500 => '#30A46B',
+                    600 => '#258651',
+                    700 => '#1D6840',
+                    800 => '#165231',
+                    900 => '#0F3E25',
+                    950 => '#0A2917',
+                ],
             ])
             ->discoverResources(in: app_path('Filament/Clients/Resources'), for: 'App\\Filament\\Clients\\Resources')
             ->discoverPages(in: app_path('Filament/Clients/Pages'), for: 'App\\Filament\\Clients\\Pages')

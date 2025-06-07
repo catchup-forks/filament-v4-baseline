@@ -31,6 +31,15 @@ enum RolesEnum: string
         ];
     }
 
+    public static function nonAdmin(): array
+    {
+        return [
+            self::ASSISTANCE->value,
+            self::USERADMIN->value,
+            self::USER->value,
+        ];
+    }
+
     public function label(): string
     {
         return match ($this) {

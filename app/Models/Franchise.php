@@ -3,9 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Franchise extends BaseModel
+class Franchise extends Model
 {
     /** @use HasFactory<\Database\Factories\FranchiseFactory> */
     use HasFactory;
+
+    public $timestamps = false;
+
+    protected $guarded = [];
+
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
