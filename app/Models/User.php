@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\RolesEnum;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasTenants;
 use Filament\Panel;
@@ -46,6 +47,10 @@ class User extends Authenticatable implements FilamentUser, HasTenants
 
     public function canAccessTenant(Model $tenant): bool
     {
+        if ($this->hasAnyRole(RolesEnum::elevated())) {
+            return true;
+        }
+
         return $this->franchises()->whereKey($tenant)->exists();
     }
 
