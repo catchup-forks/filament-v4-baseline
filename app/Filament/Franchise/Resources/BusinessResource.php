@@ -56,6 +56,7 @@ class BusinessResource extends TenantScopedResource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListBusinesses::route('/'),        ];
+            'index' => Pages\ListBusinesses::route('/'),
+        ];
     }
 }

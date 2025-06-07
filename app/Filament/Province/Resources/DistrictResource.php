@@ -60,6 +60,7 @@ class DistrictResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListDistricts::route('/'),        ];
+            'index' => Pages\ListDistricts::route('/'),
+        ];
     }
 }

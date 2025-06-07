@@ -67,6 +67,7 @@ class ContactResource extends TenantScopedResource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListContacts::route('/'),        ];
+            'index' => Pages\ListContacts::route('/'),
+        ];
     }
 }

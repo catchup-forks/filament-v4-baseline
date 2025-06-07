@@ -76,6 +76,7 @@ class QuoteResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListQuotes::route('/'),        ];
+            'index' => Pages\ListQuotes::route('/'),
+        ];
     }
 }

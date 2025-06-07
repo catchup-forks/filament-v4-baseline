@@ -56,6 +56,7 @@ class CreditorResource extends TenantScopedResource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCreditors::route('/'),        ];
+            'index' => Pages\ListCreditors::route('/'),
+        ];
     }
 }

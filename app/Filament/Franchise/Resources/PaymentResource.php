@@ -68,6 +68,7 @@ class PaymentResource extends TenantScopedResource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPayments::route('/'),        ];
+            'index' => Pages\ListPayments::route('/'),
+        ];
     }
 }

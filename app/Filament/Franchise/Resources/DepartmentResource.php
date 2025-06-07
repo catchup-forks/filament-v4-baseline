@@ -61,6 +61,7 @@ class DepartmentResource extends TenantScopedResource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListDepartments::route('/'),        ];
+            'index' => Pages\ListDepartments::route('/'),
+        ];
     }
 }

@@ -61,6 +61,7 @@ class ItemResource extends TenantScopedResource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListItems::route('/'),        ];
+            'index' => Pages\ListItems::route('/'),
+        ];
     }
 }

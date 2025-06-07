@@ -65,6 +65,7 @@ class MunicipalityResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListMunicipalities::route('/'),        ];
+            'index' => Pages\ListMunicipalities::route('/'),
+        ];
     }
 }

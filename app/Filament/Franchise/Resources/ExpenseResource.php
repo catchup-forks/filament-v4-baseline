@@ -73,6 +73,7 @@ class ExpenseResource extends TenantScopedResource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListExpenses::route('/'),        ];
+            'index' => Pages\ListExpenses::route('/'),
+        ];
     }
 }
