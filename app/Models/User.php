@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasTenants;
 use Filament\Panel;
@@ -34,19 +32,19 @@ class User extends Authenticatable implements FilamentUser, HasTenants
         'password'          => 'hashed',
     ];
 
-    public function teams(): BelongsToMany
+    public function franchises(): BelongsToMany
     {
-        return $this->belongsToMany(Team::class);
+        return $this->belongsToMany(Franchise::class);
     }
 
     public function getTenants(Panel $panel): Collection
     {
-        return $this->teams;
+        return $this->franchises;
     }
 
     public function canAccessTenant(Model $tenant): bool
     {
-        return $this->teams()->whereKey($tenant)->exists();
+        return $this->franchises()->whereKey($tenant)->exists();
     }
 
     public function canAccessPanel(Panel $panel): bool

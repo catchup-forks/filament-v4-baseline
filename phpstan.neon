@@ -5,7 +5,7 @@ parameters:
     tmpDir: null
     level: 3
     paths:
-        - Modules/
+        - app/
 
     excludePaths:
         analyse:
