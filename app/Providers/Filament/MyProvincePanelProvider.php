@@ -2,7 +2,6 @@
 
 namespace App\Providers\Filament;
 
-use App\Models\Franchise;
 use Filament\FontProviders\GoogleFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -112,7 +111,7 @@ class MyProvincePanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ])
-            ->tenant(Franchise::class, slugAttribute: 'slug');
+            ]);
+        //->tenant(Franchise::class, slugAttribute: 'slug');
     }
 }
