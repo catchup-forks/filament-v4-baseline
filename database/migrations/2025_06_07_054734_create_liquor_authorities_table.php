@@ -12,6 +12,10 @@ return new class () extends Migration {
             $table->foreignId('franchise_id')
                 ->constrained()
                 ->cascadeOnDelete();
+            $table->foreignId('province_id')
+                ->constrained()
+                ->cascadeOnDelete();
+            $table->string('name');
         });
     }
 

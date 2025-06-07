@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\DepartmentType;
 use App\Models\Department;
 use App\Models\Franchise;
 
@@ -9,19 +10,15 @@ class DepartmentSeeder extends AbstractSeeder
 {
     public function run(): void
     {
-        if (DepartmentType::count() === 0) {
-            collect(['Sales', 'Support', 'Management'])->each(
-                fn ($name) => DepartmentType::factory()->create(['name' => $name])
-            );
-        }
+        $this->progress('Creating Provinces', function () {
+            $types = DepartmentType::cases();
 
-        $typeIds = DepartmentType::pluck('id')->all();
-
-        Franchise::all()->each(
-            fn ($franchise) => Department::factory()->create([
-                'franchise_id'       => $franchise->id,
-                'department_type_id' => $typeIds[array_rand($typeIds)],
-            ])
-        );
+            Franchise::all()->each(function ($franchise) use ($types) {
+                Department::factory()->create([
+                    'franchise_id'    => $franchise->id,
+                    'department_type' => $types[array_rand($types)]->value,
+                ]);
+            });
+        });
     }
 }

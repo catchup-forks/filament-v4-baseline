@@ -12,7 +12,10 @@ class RoleSeeder extends AbstractSeeder
     {
         $this->progress('Creating Roles', function () {
             foreach (RolesEnum::cases() as $role) {
-                Role::query()->firstOrCreate(['name' => $role->value]);
+                Role::query()->firstOrCreate([
+                    'name'       => $role->value,
+                    'guard_name' => 'web',
+                ]);
             }
         });
     }

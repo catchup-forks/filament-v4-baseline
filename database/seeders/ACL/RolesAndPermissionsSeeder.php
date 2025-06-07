@@ -12,17 +12,6 @@ class RolesAndPermissionsSeeder extends AbstractSeeder
     public function run(): void
     {
         $this->progress('Syncing Roles & Permissions', function () {
-            $staticPermissions = [
-                'view dashboard',
-                'manage users',
-                'create invoices',
-                'approve quotes',
-            ];
-
-            foreach ($staticPermissions as $permission) {
-                Permission::query()->firstOrCreate(['name' => $permission]);
-            }
-
             $models = [
                 'franchise', 'user', 'business', 'contact',
                 'invoice', 'quote', 'expense', 'payment',
@@ -39,7 +28,10 @@ class RolesAndPermissionsSeeder extends AbstractSeeder
                 ->values();
 
             foreach ($generatedPermissions as $permission) {
-                Permission::query()->firstOrCreate(['name' => $permission]);
+                Permission::query()->firstOrCreate([
+                    'name'       => $permission,
+                    'guard_name' => 'web',
+                ]);
             }
 
             $allPermissions = Permission::query()->pluck('name')->toArray();

@@ -6,7 +6,9 @@ use App\Enums\DepartmentType;
 use App\Models\Business;
 use App\Models\Department;
 use App\Models\Franchise;
+use App\Models\Province;
 use App\Models\User;
+use Database\Seeders\Location\DistrictSeeder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 abstract class AbstractFactory extends Factory
@@ -33,6 +35,13 @@ abstract class AbstractFactory extends Factory
                     'franchise_id' => $franchise->id,
                 ])->each(fn ($user) => $user->assignRole($role));
             });
+        });
+    }
+
+    public function withDistricts(): static
+    {
+        return $this->afterCreating(function (Province $province) {
+            DistrictSeeder::fromProvince($province);
         });
     }
 
